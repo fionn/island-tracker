@@ -1,6 +1,7 @@
 .env
 venv/
 tags
+assets/
 __pycache__/
 .mypy_cache/
 *.swp
