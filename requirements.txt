@@ -1,2 +1,2 @@
-tweepy == 3.8.0
-git+https://github.com/fionn/amti-islands.git@5bd3beb816ddd64a4980d8d2c92154bef81f9350#egg=amti-islands
+tweepy == 3.9.0
+git+https://github.com/fionn/amti-islands.git@d2069984a01e629424f687a1119ceeb604271c43#egg=amti-islands

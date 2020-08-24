@@ -3,12 +3,8 @@ VENV ?= venv
 
 $(VENV): requirements.txt
 	@python -m venv $@ --prompt $@::island
-	@source $@/bin/activate && pip install -r $<
+	@source $@/bin/activate && pip --disable-pip-version-check install -r $<
 	@echo "Enter virtual environment: source venv/bin/activate"
-
-.PHONY: test
-test:
-	@python $(SRC)/test.py
 
 tags: $(SRC)
 	@ctags --languages=python --python-kinds=-i -R $(SRC)
