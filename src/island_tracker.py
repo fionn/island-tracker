@@ -44,7 +44,8 @@ class Twitter:
             name = island.title + " / " + island.names["Taiwan"]
 
         text = f"{name} ({island.geo.lat:.4f}, {island.geo.long:.4f}). {island.url}"
-        return {"status": text, "lat": island.geo.lat, "long": island.geo.long}
+        return {"status": text, "lat": island.geo.lat, "long": island.geo.long,
+                "display_coordinates": True}
 
     def update(self, island: amti.Island, dry_run: bool = False) -> tweepy.Status:
         """Post tweet for shape"""
