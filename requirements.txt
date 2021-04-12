@@ -1,2 +1,2 @@
 tweepy == 3.10.0
-git+https://github.com/fionn/amti-islands.git@fb19a0c42f0de8dafa4aadc20dd3d6cf0ddce906#egg=amti-islands
+git+https://github.com/fionn/amti-islands.git@v0.0.1#egg=amti-islands

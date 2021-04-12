@@ -36,7 +36,13 @@ class Twitter:
     @staticmethod
     def _compose(island: amti.Island) -> dict:
         """Compose a status dictionary compatible with api.status_update"""
-        name = island.names["Taiwan"]
+        name_tw_en, name_tw_zh = island.names["Taiwan"].split(", ", maxsplit=1)
+
+        if island.title == name_tw_en:
+            name = island.title + ", " + name_tw_zh
+        else:
+            name = island.title + " / " + island.names["Taiwan"]
+
         text = f"{name} ({island.geo.lat:.4f}, {island.geo.long:.4f}). {island.url}"
         return {"status": text, "lat": island.geo.lat, "long": island.geo.long}
 
