@@ -30,8 +30,7 @@ class Twitter:
                                    os.environ["API_SECRET"])
         auth.set_access_token(os.environ["ACCESS_TOKEN"],
                               os.environ["ACCESS_TOKEN_SECRET"])
-        self.api = tweepy.API(auth, wait_on_rate_limit=True,
-                              wait_on_rate_limit_notify=True)
+        self.api = tweepy.API(auth, wait_on_rate_limit=True)
 
     @staticmethod
     def _compose(island: amti.Island) -> dict:
@@ -46,13 +45,13 @@ class Twitter:
         text = f"{name} ({island.geo.lat:.4f}, {island.geo.long:.4f}). {island.url}"
         return {"status": text, "lat": island.geo.lat, "long": island.geo.long}
 
-    def update(self, island: amti.Island, dry_run: bool = False) -> tweepy.Status:
+    def update(self, island: amti.Island, dry_run: bool = False) -> tweepy.models.Status:
         """Post tweet for shape"""
         composition = self._compose(island)
         LOG.info("Selecting %s", island.names["Taiwan"])
 
         if dry_run:
-            return tweepy.Status
+            return tweepy.models.Status
 
         return self.api.update_status(**composition)
 
