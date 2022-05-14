@@ -1,2 +1,2 @@
-tweepy == 4.4.0
-git+https://github.com/fionn/amti-islands.git@v0.0.2#egg=amti-islands
+tweepy == 4.9.0
+amti-islands == 0.0.2

@@ -33,7 +33,7 @@ class Twitter:
         self.api = tweepy.API(auth, wait_on_rate_limit=True)
 
     @staticmethod
-    def _compose(island: amti.Island) -> dict:
+    def _compose(island: amti.Island) -> dict[str, str | float]:
         """Compose a status dictionary compatible with api.status_update"""
         name_tw_en, name_tw_zh = island.names["Taiwan"].split(", ", maxsplit=1)
 
@@ -57,13 +57,13 @@ class Twitter:
 
 def main() -> None:
     """Entry point"""
-    parser = argparse.ArgumentParser(description="Tweet shapes")
+    parser = argparse.ArgumentParser(description="Tweet an island")
     parser.add_argument("-n", "--dry-run", action="store_true")
     args = parser.parse_args()
 
     twitter = Twitter()
 
-    amti_instance = amti.AMTI("island-tracker/china")
+    amti_instance = amti.AMTI()
 
     island = amti_instance.random_island()
     tweet = twitter.update(island, args.dry_run)

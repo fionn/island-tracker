@@ -1,9 +1,11 @@
 SRC = src/
 VENV ?= venv
 
-$(VENV): requirements.txt
+export PIP_DISABLE_PIP_VERSION_CHECK=1
+
+$(VENV): requirements.txt requirements_dev.txt
 	@python -m venv $@ --prompt $@::island
-	@source $@/bin/activate && pip --disable-pip-version-check install -r $<
+	@source $@/bin/activate && pip install -r $< -r requirements_dev.txt
 	@echo "Enter virtual environment: source venv/bin/activate"
 
 tags: $(SRC)
